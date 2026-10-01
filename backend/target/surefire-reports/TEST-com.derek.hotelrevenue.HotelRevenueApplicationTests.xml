@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" version="3.0.2" name="com.derek.hotelrevenue.strategy.OccupancyPricingStrategyTest" time="0.004" tests="3" errors="0" skipped="0" failures="0" flakes="0">
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" version="3.0.2" name="com.derek.hotelrevenue.HotelRevenueApplicationTests" time="0.647" tests="1" errors="0" skipped="0" failures="0" flakes="0">
   <properties>
     <property name="java.specification.version" value="21"/>
     <property name="sun.jnu.encoding" value="UTF-8"/>
@@ -65,7 +65,21 @@
     <property name="java.class.version" value="65.0"/>
     <property name="LOGGED_APPLICATION_NAME" value="[hotel-revenue-management] "/>
   </properties>
-  <testcase name="shouldReturnBasePriceForLowOccupancy" classname="com.derek.hotelrevenue.strategy.OccupancyPricingStrategyTest" time="0.002"/>
-  <testcase name="shouldIncreasePriceForHighOccupancy" classname="com.derek.hotelrevenue.strategy.OccupancyPricingStrategyTest" time="0.001"/>
-  <testcase name="shouldApplyMaximumAdjustmentForVeryHighOccupancy" classname="com.derek.hotelrevenue.strategy.OccupancyPricingStrategyTest" time="0.001"/>
+  <testcase name="contextLoads" classname="com.derek.hotelrevenue.HotelRevenueApplicationTests" time="0.291">
+    <system-out><![CDATA[01:41:17.940 [main] INFO org.springframework.test.context.support.AnnotationConfigContextLoaderUtils -- Could not detect default configuration classes for test class [com.derek.hotelrevenue.HotelRevenueApplicationTests]: HotelRevenueApplicationTests does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+01:41:17.971 [main] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper -- Found @SpringBootConfiguration com.derek.hotelrevenue.HotelRevenueManagementApplication for test class com.derek.hotelrevenue.HotelRevenueApplicationTests
+01:41:17.998 [main] INFO org.springframework.test.context.support.AnnotationConfigContextLoaderUtils -- Could not detect default configuration classes for test class [com.derek.hotelrevenue.HotelRevenueApplicationTests]: HotelRevenueApplicationTests does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+01:41:17.998 [main] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper -- Found @SpringBootConfiguration com.derek.hotelrevenue.HotelRevenueManagementApplication for test class com.derek.hotelrevenue.HotelRevenueApplicationTests
+01:41:18.018 [main] INFO org.springframework.boot.devtools.restart.RestartApplicationListener -- Restart disabled due to context in which it is running
+2026-10-02T01:41:18.106+05:30  INFO 82215 --- [hotel-revenue-management] [           main] c.d.h.HotelRevenueApplicationTests       : Starting HotelRevenueApplicationTests using Java 21.0.12.1 with PID 82215 (started by derekdsouza in /Users/derekdsouza/hotel-revenue-management-system/backend)
+2026-10-02T01:41:18.106+05:30  INFO 82215 --- [hotel-revenue-management] [           main] c.d.h.HotelRevenueApplicationTests       : No active profile set, falling back to 1 default profile: "default"
+2026-10-02T01:41:18.235+05:30  INFO 82215 --- [hotel-revenue-management] [           main] c.d.h.HotelRevenueApplicationTests       : Started HotelRevenueApplicationTests in 0.219 seconds (process running for 0.561)
+]]></system-out>
+    <system-err><![CDATA[Mockito is currently self-attaching to enable the inline-mock-maker. This will no longer work in future releases of the JDK. Please add Mockito as an agent to your build as described in Mockito's documentation: https://javadoc.io/doc/org.mockito/mockito-core/latest/org.mockito/org/mockito/Mockito.html#0.3
+WARNING: A Java agent has been loaded dynamically (/Users/derekdsouza/.m2/repository/net/bytebuddy/byte-buddy-agent/1.18.11/byte-buddy-agent-1.18.11.jar)
+WARNING: If a serviceability tool is in use, please run with -XX:+EnableDynamicAgentLoading to hide this warning
+WARNING: If a serviceability tool is not in use, please run with -Djdk.instrument.traceUsage for more information
+WARNING: Dynamic loading of agents will be disallowed by default in a future release
+]]></system-err>
+  </testcase>
 </testsuite>

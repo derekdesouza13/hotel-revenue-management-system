@@ -3,9 +3,12 @@ com/derek/hotelrevenue/model/Booking.class
 com/derek/hotelrevenue/enums/RoomType.class
 com/derek/hotelrevenue/model/PricingRule.class
 com/derek/hotelrevenue/model/Room.class
+com/derek/hotelrevenue/strategy/PricingStrategy.class
 com/derek/hotelrevenue/HotelRevenueManagementApplication.class
 com/derek/hotelrevenue/enums/UserRole.class
+com/derek/hotelrevenue/strategy/Test.class
 com/derek/hotelrevenue/enums/BookingStatus.class
 com/derek/hotelrevenue/model/User.class
 com/derek/hotelrevenue/model/Hotel.class
 com/derek/hotelrevenue/model/Guest.class
+com/derek/hotelrevenue/strategy/OccupancyPricingStrategy.class
