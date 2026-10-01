@@ -2,29 +2,48 @@ package com.derek.hotelrevenue.model;
 
 import java.time.LocalDateTime;
 
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Index;
+import jakarta.persistence.Table;
+
+@Entity
+@Table(
+        name = "hotels",
+        indexes = {
+                @Index(name = "idx_hotel_location", columnList = "location")
+        }
+)
 public class Hotel {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column(nullable = false, length = 150)
     private String name;
 
+    @Column(nullable = false, length = 150)
     private String location;
 
+    @Column(name = "total_rooms", nullable = false)
     private int totalRooms;
 
+    @Column(name = "created_at", nullable = false)
     private LocalDateTime createdAt;
 
-    public Hotel() {
-        this.createdAt = LocalDateTime.now();
+    protected Hotel() {
+        // Required by JPA
     }
 
     public Hotel(
-            Long id,
             String name,
             String location,
             int totalRooms
     ) {
-        this.id = id;
         this.name = name;
         this.location = location;
         this.totalRooms = totalRooms;
@@ -33,10 +52,6 @@ public class Hotel {
 
     public Long getId() {
         return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
     }
 
     public String getName() {
@@ -65,9 +80,5 @@ public class Hotel {
 
     public LocalDateTime getCreatedAt() {
         return createdAt;
-    }
-
-    public void setCreatedAt(LocalDateTime createdAt) {
-        this.createdAt = createdAt;
     }
 }

@@ -2,33 +2,72 @@ package com.derek.hotelrevenue.model;
 
 import java.math.BigDecimal;
 
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
+import jakarta.persistence.ForeignKey;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Index;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.Table;
+
+@Entity
+@Table(
+        name = "pricing_rules",
+        indexes = {
+                @Index(name = "idx_pricing_rule_hotel", columnList = "hotel_id")
+        }
+)
 public class PricingRule {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private Long hotelId;
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(
+            name = "hotel_id",
+            nullable = false,
+            foreignKey = @ForeignKey(name = "fk_pricing_rule_hotel")
+    )
+    private Hotel hotel;
 
+    @Column(name = "rule_name", nullable = false, length = 100)
     private String ruleName;
 
-    private double occupancyThreshold;
+    @Column(
+            name = "occupancy_threshold",
+            nullable = false,
+            precision = 5,
+            scale = 2
+    )
+    private BigDecimal occupancyThreshold;
 
+    @Column(
+            name = "adjustment_percentage",
+            nullable = false,
+            precision = 6,
+            scale = 2
+    )
     private BigDecimal adjustmentPercentage;
 
+    @Column(nullable = false)
     private boolean active;
 
-    public PricingRule() {
-        this.active = true;
+    protected PricingRule() {
+        // Required by JPA
     }
 
     public PricingRule(
-            Long id,
-            Long hotelId,
+            Hotel hotel,
             String ruleName,
-            double occupancyThreshold,
+            BigDecimal occupancyThreshold,
             BigDecimal adjustmentPercentage
     ) {
-        this.id = id;
-        this.hotelId = hotelId;
+        this.hotel = hotel;
         this.ruleName = ruleName;
         this.occupancyThreshold = occupancyThreshold;
         this.adjustmentPercentage = adjustmentPercentage;
@@ -39,40 +78,20 @@ public class PricingRule {
         return id;
     }
 
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public Long getHotelId() {
-        return hotelId;
-    }
-
-    public void setHotelId(Long hotelId) {
-        this.hotelId = hotelId;
+    public Hotel getHotel() {
+        return hotel;
     }
 
     public String getRuleName() {
         return ruleName;
     }
 
-    public void setRuleName(String ruleName) {
-        this.ruleName = ruleName;
-    }
-
-    public double getOccupancyThreshold() {
+    public BigDecimal getOccupancyThreshold() {
         return occupancyThreshold;
-    }
-
-    public void setOccupancyThreshold(double occupancyThreshold) {
-        this.occupancyThreshold = occupancyThreshold;
     }
 
     public BigDecimal getAdjustmentPercentage() {
         return adjustmentPercentage;
-    }
-
-    public void setAdjustmentPercentage(BigDecimal adjustmentPercentage) {
-        this.adjustmentPercentage = adjustmentPercentage;
     }
 
     public boolean isActive() {
