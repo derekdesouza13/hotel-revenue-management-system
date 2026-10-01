@@ -1,1 +1,14 @@
 /Users/derekdsouza/hotel-revenue-management-system/backend/src/main/java/com/derek/hotelrevenue/HotelRevenueManagementApplication.java
+/Users/derekdsouza/hotel-revenue-management-system/backend/src/main/java/com/derek/hotelrevenue/enums/BookingStatus.java
+/Users/derekdsouza/hotel-revenue-management-system/backend/src/main/java/com/derek/hotelrevenue/enums/RoomStatus.java
+/Users/derekdsouza/hotel-revenue-management-system/backend/src/main/java/com/derek/hotelrevenue/enums/RoomType.java
+/Users/derekdsouza/hotel-revenue-management-system/backend/src/main/java/com/derek/hotelrevenue/enums/UserRole.java
+/Users/derekdsouza/hotel-revenue-management-system/backend/src/main/java/com/derek/hotelrevenue/model/Booking.java
+/Users/derekdsouza/hotel-revenue-management-system/backend/src/main/java/com/derek/hotelrevenue/model/Guest.java
+/Users/derekdsouza/hotel-revenue-management-system/backend/src/main/java/com/derek/hotelrevenue/model/Hotel.java
+/Users/derekdsouza/hotel-revenue-management-system/backend/src/main/java/com/derek/hotelrevenue/model/PricingRule.java
+/Users/derekdsouza/hotel-revenue-management-system/backend/src/main/java/com/derek/hotelrevenue/model/Room.java
+/Users/derekdsouza/hotel-revenue-management-system/backend/src/main/java/com/derek/hotelrevenue/model/User.java
+/Users/derekdsouza/hotel-revenue-management-system/backend/src/main/java/com/derek/hotelrevenue/strategy/OccupancyPricingStrategy.java
+/Users/derekdsouza/hotel-revenue-management-system/backend/src/main/java/com/derek/hotelrevenue/strategy/PricingStrategy.java
+/Users/derekdsouza/hotel-revenue-management-system/backend/src/main/java/com/derek/hotelrevenue/strategy/Test.java
