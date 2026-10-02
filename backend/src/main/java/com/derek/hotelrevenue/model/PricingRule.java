@@ -98,6 +98,18 @@ public class PricingRule {
         return active;
     }
 
+    public void setRuleName(String ruleName) {
+        this.ruleName = ruleName;
+    }
+
+    public void setOccupancyThreshold(BigDecimal occupancyThreshold) {
+        this.occupancyThreshold = occupancyThreshold;
+    }
+
+    public void setAdjustmentPercentage(BigDecimal adjustmentPercentage) {
+        this.adjustmentPercentage = adjustmentPercentage;
+    }
+
     public void setActive(boolean active) {
         this.active = active;
     }

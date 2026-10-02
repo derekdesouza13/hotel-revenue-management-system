@@ -6,8 +6,10 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @SpringBootApplication
 public class HotelRevenueManagementApplication {
 
-	public static void main(String[] args) {
-		SpringApplication.run(HotelRevenueManagementApplication.class, args);
-	}
-
+    public static void main(String[] args) {
+        SpringApplication.run(
+                HotelRevenueManagementApplication.class,
+                args
+        );
+    }
 }

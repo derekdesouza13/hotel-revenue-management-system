@@ -30,7 +30,11 @@
     </properties>
 
     <dependencies>
-
+    
+      <dependency>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-web</artifactId>
+    </dependency>
     <!-- Core Spring Boot -->
     <dependency>
         <groupId>org.springframework.boot</groupId>
@@ -43,14 +47,14 @@
         <artifactId>spring-boot-starter-data-jpa</artifactId>
     </dependency>
 
-    <!-- MySQL JDBC Driver -->
+    <!-- MySQL -->
     <dependency>
         <groupId>com.mysql</groupId>
         <artifactId>mysql-connector-j</artifactId>
         <scope>runtime</scope>
     </dependency>
 
-    <!-- Developer productivity -->
+    <!-- DevTools -->
     <dependency>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-devtools</artifactId>
@@ -58,14 +62,19 @@
         <optional>true</optional>
     </dependency>
 
-    <!-- Testing -->
+    <!-- Tests -->
+    <dependency>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-starter-webmvc-test</artifactId>
+    <scope>test</scope>
+     </dependency>
     <dependency>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-test</artifactId>
         <scope>test</scope>
     </dependency>
 
-    <!-- In-memory database for repository tests -->
+    <!-- H2 for repository tests -->
     <dependency>
         <groupId>com.h2database</groupId>
         <artifactId>h2</artifactId>
