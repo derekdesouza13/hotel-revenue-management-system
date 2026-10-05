@@ -8,31 +8,26 @@ import {
   Tooltip,
 } from "recharts";
 
-const data = [
-  { day: "Mon", occupancy: 68 },
-  { day: "Tue", occupancy: 72 },
-  { day: "Wed", occupancy: 75 },
-  { day: "Thu", occupancy: 71 },
-  { day: "Fri", occupancy: 84 },
-  { day: "Sat", occupancy: 91 },
-  { day: "Sun", occupancy: 87 },
-];
+function OccupancyChart({ data = [] }) {
+  const chartData = data.map((item) => ({
+    date: item.date,
+    occupancy: item.occupancyRate,
+  }));
 
-function OccupancyChart() {
   return (
     <div className="chart-card">
       <div className="chart-header">
         <div>
           <h3>Occupancy</h3>
-          <p>Average room occupancy</p>
+          <p>Daily room occupancy</p>
         </div>
 
-        <span className="chart-period">This week</span>
+        <span className="chart-period">This month</span>
       </div>
 
       <div className="chart-container">
         <ResponsiveContainer width="100%" height="100%">
-          <AreaChart data={data}>
+          <AreaChart data={chartData}>
             <defs>
               <linearGradient
                 id="occupancyGradient"
@@ -41,8 +36,16 @@ function OccupancyChart() {
                 x2="0"
                 y2="1"
               >
-                <stop offset="0%" stopColor="#10b981" stopOpacity={0.25} />
-                <stop offset="100%" stopColor="#10b981" stopOpacity={0} />
+                <stop
+                  offset="0%"
+                  stopColor="#10b981"
+                  stopOpacity={0.25}
+                />
+                <stop
+                  offset="100%"
+                  stopColor="#10b981"
+                  stopOpacity={0}
+                />
               </linearGradient>
             </defs>
 
@@ -53,10 +56,13 @@ function OccupancyChart() {
             />
 
             <XAxis
-              dataKey="day"
+              dataKey="date"
               axisLine={false}
               tickLine={false}
               tick={{ fill: "#6b7280", fontSize: 12 }}
+              tickFormatter={(value) =>
+                new Date(value).getDate()
+              }
             />
 
             <YAxis
@@ -68,7 +74,19 @@ function OccupancyChart() {
             />
 
             <Tooltip
-              formatter={(value) => [`${value}%`, "Occupancy"]}
+              labelFormatter={(value) =>
+                new Date(value).toLocaleDateString(
+                  "en-IN",
+                  {
+                    day: "2-digit",
+                    month: "short",
+                  }
+                )
+              }
+              formatter={(value) => [
+                `${value}%`,
+                "Occupancy",
+              ]}
             />
 
             <Area
