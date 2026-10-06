@@ -1,5 +1,6 @@
 package com.derek.hotelrevenue.controller;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 import org.springframework.http.HttpStatus;
@@ -9,6 +10,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -87,7 +89,10 @@ public class RoomController {
     public ResponseEntity<RoomResponse> createRoom(
             @RequestBody RoomRequest request) {
 
-        Hotel hotel = hotelService.getHotelById(request.getHotelId());
+        Hotel hotel =
+                hotelService.getHotelById(
+                        request.getHotelId()
+                );
 
         Room room = new Room(
                 hotel,
@@ -108,7 +113,25 @@ public class RoomController {
             @PathVariable Long id,
             @RequestParam RoomStatus status) {
 
-        Room room = roomService.updateRoomStatus(id, status);
+        Room room =
+                roomService.updateRoomStatus(
+                        id,
+                        status
+                );
+
+        return ResponseEntity.ok(toResponse(room));
+    }
+
+    @PutMapping("/{id}/price")
+    public ResponseEntity<RoomResponse> updateRoomPrice(
+            @PathVariable Long id,
+            @RequestParam BigDecimal price) {
+
+        Room room =
+                roomService.updateRoomPrice(
+                        id,
+                        price
+                );
 
         return ResponseEntity.ok(toResponse(room));
     }

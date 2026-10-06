@@ -1,5 +1,6 @@
 package com.derek.hotelrevenue.service;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 import org.springframework.stereotype.Service;
@@ -23,11 +24,13 @@ public class RoomService {
     }
 
     public Room getRoomById(Long id) {
-    return roomRepository.findById(id)
-            .orElseThrow(() ->
-                    new ResourceNotFoundException("Room not found with id: " + id)
-            );
-}
+        return roomRepository.findById(id)
+                .orElseThrow(() ->
+                        new ResourceNotFoundException(
+                                "Room not found with id: " + id
+                        )
+                );
+    }
 
     public List<Room> getRoomsByHotel(Long hotelId) {
         return roomRepository.findByHotelId(hotelId);
@@ -54,10 +57,38 @@ public class RoomService {
         return roomRepository.save(room);
     }
 
-    public Room updateRoomStatus(Long id, RoomStatus status) {
+    public Room updateRoomStatus(
+            Long id,
+            RoomStatus status
+    ) {
+
         Room room = getRoomById(id);
 
         room.setStatus(status);
+
+        return roomRepository.save(room);
+    }
+
+    public Room updateRoomPrice(
+            Long roomId,
+            BigDecimal newPrice
+    ) {
+
+        if (newPrice == null) {
+            throw new IllegalArgumentException(
+                    "New price cannot be null"
+            );
+        }
+
+        if (newPrice.compareTo(BigDecimal.ZERO) <= 0) {
+            throw new IllegalArgumentException(
+                    "New price must be greater than zero"
+            );
+        }
+
+        Room room = getRoomById(roomId);
+
+        room.setBasePrice(newPrice);
 
         return roomRepository.save(room);
     }
